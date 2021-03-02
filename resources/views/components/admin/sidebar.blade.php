@@ -13,6 +13,23 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Dashboard</li>
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-collection-fill"></i>
+                        <span>Products</span>
+                    </a>
+                    <ul class="submenu" style="display: block;">
+                        <li class="submenu-item ">
+                            <a href="{{ route('category.index') }}">Category</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="extra-component-avatar.html">Add Product</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="extra-component-avatar.html">Manage Products</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
