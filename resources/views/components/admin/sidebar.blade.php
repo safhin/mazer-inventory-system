@@ -23,10 +23,10 @@
                             <a href="{{ route('category.index') }}">Category</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="extra-component-avatar.html">Add Product</a>
+                            <a href="{{ route('product.create') }}">Add Product</a>
                         </li>
                         <li class="submenu-item ">
-                            <a href="extra-component-avatar.html">Manage Products</a>
+                            <a href="{{ route('product.index') }}">Manage Products</a>
                         </li>
                     </ul>
                 </li>

@@ -23,7 +23,14 @@ Route::get('/', function () {
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 //products
+Route::get('/products', [ProductController::class, 'index'])->name('product.index');
 Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+Route::post('/product/store', [ProductController::class, 'store'])->name('product.store');
+Route::get('/product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+Route::patch('/product/update/{id}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('/product/delete/{id}', [ProductController::class, 'destroy'])->name('product.delete');
+
+//Categories
 Route::get('/categories', [CategoryController::class, 'index'])->name('category.index');
 Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
 Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');

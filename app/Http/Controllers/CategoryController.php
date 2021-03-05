@@ -11,7 +11,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return \view('products.category')->with('categories', $categories);
+        return \view('products.category.category')->with('categories', $categories);
     }
 
     public function store(Request $request)
@@ -30,7 +30,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-        return \view('products.edit')->with('category',$category);
+        return \view('products.category.edit')->with('category',$category);
     }
 
     public function update(Request $request, $id)

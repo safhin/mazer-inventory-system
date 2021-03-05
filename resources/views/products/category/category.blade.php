@@ -43,13 +43,19 @@
                                         <label>Category Name</label>
                                     </div>
                                     <div class="col-md-8 form-group">
-                                        <input type="text" id="category_name" class="form-control" name="name" placeholder="Category Name">
+                                        <input type="text" id="category_name" class="form-control" name="name" placeholder="Category Name" value="{{ old('name') }}">
+                                            @if ($errors->has('name'))
+                                            <p style="color: red">{{ $errors->first('name') }}</p>
+                                        @endif
                                     </div>
                                     <div class="col-md-4">
                                         <label>Category slug</label>
                                     </div>
                                     <div class="col-md-8 form-group">
-                                        <input type="text" id="category_slug" class="form-control" name="slug" placeholder="Category Slug">
+                                        <input type="text" id="category_slug" class="form-control" name="slug" placeholder="Category Slug" value="{{ old('slug') }}">
+                                            @if ($errors->has('slug'))
+                                            <p style="color: red">{{ $errors->first('slug') }}</p>
+                                        @endif
                                     </div>
                                     <div class="col-sm-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>

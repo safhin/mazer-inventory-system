@@ -1,59 +1,106 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row match-height">
-        <div class="col-md-12 col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Horizontal Form</h4>
+    <header class="mb-3">
+        <a href="#" class="burger-btn d-block d-xl-none">
+            <i class="bi bi-justify fs-3"></i>
+        </a>
+    </header>
+    <div class="page-heading">
+        <div class="page-title">
+            <div class="row">
+                <div class="col-12 col-md-6 order-md-1 order-last">
+                    <h3>Create Products</h3>
+                    <p class="text-subtitle text-muted">Multiple form layout you can use</p>
                 </div>
-                <div class="card-content">
-                    <div class="card-body">
-                        <form class="form form-horizontal">
-                            <div class="form-body">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <label>First Name</label>
-                                    </div>
-                                    <div class="col-md-8 form-group">
-                                        <input type="text" id="first-name" class="form-control" name="fname" placeholder="First Name">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label>Email</label>
-                                    </div>
-                                    <div class="col-md-8 form-group">
-                                        <input type="email" id="email-id" class="form-control" name="email-id" placeholder="Email">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label>Mobile</label>
-                                    </div>
-                                    <div class="col-md-8 form-group">
-                                        <input type="number" id="contact-info" class="form-control" name="contact" placeholder="Mobile">
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label>Password</label>
-                                    </div>
-                                    <div class="col-md-8 form-group">
-                                        <input type="password" id="password" class="form-control" name="password" placeholder="Password">
-                                    </div>
-                                    <div class="col-12 col-md-8 offset-md-4 form-group">
-                                        <div class="form-check">
-                                            <div class="checkbox">
-                                                <input type="checkbox" id="checkbox1" class="form-check-input" checked="">
-                                                <label for="checkbox1">Remember Me</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Submit</button>
-                                        <button type="reset" class="btn btn-light-secondary me-1 mb-1">Reset</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                <div class="col-12 col-md-6 order-md-2 order-first">
+                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Form Layout</li>
+                        </ol>
+                    </nav>
                 </div>
             </div>
         </div>
+        <!-- // Basic multiple Column Form section start -->
+        <section id="multiple-column-form">
+            <div class="row match-height">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Multiple Column</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body">
+                                <form class="form" action="{{ route('product.store') }}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="title">Title</label>
+                                                <input type="text" id="title" class="form-control" placeholder="Title" name="title" value="{{ old('title') }}">
+                                                @if ($errors->has('title'))
+                                                    <p style="color: red">{{ $errors->first('title') }}</p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="price">Price</label>
+                                                <input type="text" id="price" class="form-control" placeholder="Price" name="price" value="{{ old('price') }}">
+                                                @if ($errors->has('price'))
+                                                    <p style="color: red">{{ $errors->first('price') }}</p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="supplier">Supplier</label>
+                                                <input type="text" id="supplier" class="form-control" placeholder="Supplier" name="supplier" value="{{ old('supplier') }}">
+                                                @if ($errors->has('supplier'))
+                                                    <p style="color: red">{{ $errors->first('supplier') }}</p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="model">Model</label>
+                                                <input type="text" id="model" class="form-control" name="model" placeholder="Model" value="{{ old('model') }}">
+                                                    @if ($errors->has('model'))
+                                                        <p style="color: red">{{ $errors->first('model') }}</p>
+                                                    @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="description">Description</label>
+                                                <textarea class="form-control" name="description" id="description" cols="30" rows="3">{{ old('description') }}</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="description">Categories</label>
+                                                <select class="form-control" name="category_id" id="category">
+                                                    <option>Select Category</option>
+                                                    @foreach ($categories as $cat)
+                                                        <option class="form-control" value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-primary me-1 mb-1">Create</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- // Basic multiple Column Form section end -->
     </div>
+    <x-admin.footer/>
 @endsection
