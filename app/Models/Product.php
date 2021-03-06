@@ -12,7 +12,7 @@ class Product extends Model
         'title',
         'price',
         'model',
-        'supplier',
+        'supplier_id',
         'description',
         'category_id',
     ];
@@ -20,5 +20,9 @@ class Product extends Model
     public function categories()
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+    public function suppliers()
+    {
+        return $this->belongsTo(Supplier::class, 'supplier_id', 'id');
     }
 }

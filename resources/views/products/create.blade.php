@@ -57,9 +57,13 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <label for="supplier">Supplier</label>
-                                                <input type="text" id="supplier" class="form-control" placeholder="Supplier" name="supplier" value="{{ old('supplier') }}">
-                                                @if ($errors->has('supplier'))
-                                                    <p style="color: red">{{ $errors->first('supplier') }}</p>
+                                                <select class="form-control" name="supplier_id" id="supplier">
+                                                    @foreach ($suppliers as $supplier)
+                                                        <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @if ($errors->has('supplier_id'))
+                                                    <p style="color: red">{{ $errors->first('supplier_id') }}</p>
                                                 @endif
                                             </div>
                                         </div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SupplierController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,3 +37,11 @@ Route::post('/category/create', [CategoryController::class, 'store'])->name('cat
 Route::get('/category/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
 Route::patch('/category/update/{id}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('/category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
+
+//Suppliers
+Route::get('/suppliers', [SupplierController::class, 'index'])->name('supplier.index');
+Route::get('/supplier/create', [SupplierController::class, 'create'])->name('supplier.create');
+Route::post('/supplier/store', [SupplierController::class, 'store'])->name('supplier.store');
+Route::get('/supplier/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit');
+Route::patch('/supplier/update/{id}', [SupplierController::class, 'update'])->name('supplier.update');
+Route::delete('/supplier/delete/{id}', [SupplierController::class, 'destroy'])->name('supplier.delete');

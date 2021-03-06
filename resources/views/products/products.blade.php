@@ -57,7 +57,7 @@
                                             <td>{{ $product->id }}</td>
                                             <td>{{ $product->title }}</td>
                                             <td>{{ $product->description }}</td>
-                                            <td>{{ $product->supplier }}</td>
+                                            <td>{{ $product->suppliers->name }}</td>
                                             <td>{{ $product->model }}</td>
                                             <td>{{ $product->price }}</td>
                                             <td>{{ $product->categories->name }}</td>

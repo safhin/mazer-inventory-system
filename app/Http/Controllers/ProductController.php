@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,7 +18,11 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return \view('products.create')->with('categories', $categories);
+        $suppliers = Supplier::all();
+        return \view('products.create',[
+            'categories' => $categories,
+            'suppliers' => $suppliers,
+        ]);
     }
 
     public function store(Request $request)
@@ -25,7 +30,7 @@ class ProductController extends Controller
         $this->validate($request,[
            'title' => 'required|max:255',
            'price' => 'required',
-           'supplier' => 'required',
+           'supplier_id' => 'required',
            'model' => 'required',
            'description' => 'nullable',
            'category_id' => 'required',
@@ -33,7 +38,7 @@ class ProductController extends Controller
         Product::create([
             'title' => $request->title, 
             'price' => $request->price, 
-            'supplier' => $request->supplier, 
+            'supplier_id' => $request->supplier_id, 
             'model' => $request->model, 
             'description' => $request->description, 
             'category_id' => $request->category_id, 
@@ -45,9 +50,11 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $categories = Category::all();
+        $suppliers = Supplier::all();
         return \view('products.edit',[
             'product' => $product, 
-            'categories' => $categories
+            'categories' => $categories,
+            'suppliers' => $suppliers,
         ]);
     }
 
@@ -56,7 +63,7 @@ class ProductController extends Controller
         $this->validate($request,[
             'title' => 'required|max:255',
             'price' => 'required',
-            'supplier' => 'required',
+            'supplier_id' => 'required',
             'model' => 'required',
             'description' => 'nullable',
             'category_id' => 'required',
@@ -65,7 +72,7 @@ class ProductController extends Controller
         DB::table('products')->where('id', $product->id)->update([
             'title'=> $request->title,
             'price' => $request->price,
-            'supplier' => $request->supplier,
+            'supplier_id' => $request->supplier_id,
             'model' => $request->model,
             'description' => $request->description,
             'category_id' => $request->category_id,

@@ -15,7 +15,7 @@
                 <li class="sidebar-title">Dashboard</li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class="sidebar-link">
-                        <i class="bi bi-collection-fill"></i>
+                        <i class="bi bi-cart-fill"></i>
                         <span>Products</span>
                     </a>
                     <ul class="submenu" style="display: block;">
@@ -27,6 +27,23 @@
                         </li>
                         <li class="submenu-item ">
                             <a href="{{ route('product.index') }}">Manage Products</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class="sidebar-link">
+                        <i class="bi bi-collection-fill"></i>
+                        <span>Suppliers</span>
+                    </a>
+                    <ul class="submenu" style="display: block;">
+                        <li class="submenu-item ">
+                            <a href="{{ route('supplier.create') }}">Add Supplier</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="{{ route('supplier.index') }}">Manage Supplier</a>
+                        </li>
+                        <li class="submenu-item ">
+                            <a href="#">Supplier Leadger</a>
                         </li>
                     </ul>
                 </li>
